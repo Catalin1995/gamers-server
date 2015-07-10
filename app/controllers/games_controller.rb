@@ -4,8 +4,4 @@ class GamesController < ApplicationController
     @all = Game.all()
   end
 
-  def create
-    @game = Game.new()
-  end
-
 end

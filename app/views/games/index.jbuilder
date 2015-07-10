@@ -1,6 +1,4 @@
 json.code 200
-json.body @all
-
-# json.body do |json|
-#   json.partial! 'issue', issue: @all
-# end
+json.body do |json|
+  json.partial! 'game', collection: @all, as: :game
+end
