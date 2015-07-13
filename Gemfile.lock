@@ -286,7 +286,7 @@ DEPENDENCIES
   jquery-rails
   json-schema
   rails (= 4.2.1)
-  rspec-rails
+  rspec-rails (~> 3.0)
   rubocop
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -5,7 +5,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    pp params[:id]
     @game = Game.find(params[:id])
   end
 
