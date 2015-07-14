@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :chat
-  resources :games
   resources :users
+
+  resources :chat, only: [:show]
+  resources :games, only: [:index, :show]
+  # get 'profile', to: 'users#show'
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'games#index'
+  # root 'games#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

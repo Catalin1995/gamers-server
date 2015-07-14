@@ -18,8 +18,11 @@ RSpec.describe GamesController, type: :controller do
   end
 
   it 'get all' do
-    get :show, id: '1', body: 'asdasdas', format: :json
-    # pp json
+    game = Game.new(name: 'Dota', category: 'STRATEGY')
+    game.save
+
+    get :index, format: :json
+    pp json
   end
 
 end

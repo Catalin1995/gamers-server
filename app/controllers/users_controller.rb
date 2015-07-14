@@ -8,16 +8,4 @@ class UsersController < ApplicationController
     @all = User.all
   end
 
-  def created
-
-  end
-
-  def delete
-
-  end
-
-  def update
-
-  end
-
 end
