@@ -51,7 +51,7 @@ RSpec.describe Chat, type: :model do
     end.to change { Chat.count }.by -1
   end
 
-  it 'presence game_id, user, content' do
+  xit 'presence game_id, user, content' do
     Chat.new(game_id: '', user: '', content: '').should_not be_valid
     Chat.new(game_id: 1, user: '', content: 'tot asa').should_not be_valid
     Chat.new(game_id: '', user: '123', content: 'asd').should_not be_valid

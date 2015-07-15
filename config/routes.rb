@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :chat, only: [:show]
   resources :games, only: [:index, :show]
-  # get 'profile', to: 'users#show'
+  post '/login', to: 'users#login'
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
