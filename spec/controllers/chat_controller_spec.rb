@@ -9,6 +9,6 @@ RSpec.describe ChatController, type: :controller do
       get :show, id: chat.id
       pp json
     end
-  end
+  end 
 
 end

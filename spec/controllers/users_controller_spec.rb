@@ -21,12 +21,12 @@ RSpec.describe UsersController, type: :controller do
       password: 'password',
       password_confirmation: 'password'
     }
-    }
   end
 
   let(:login) do {
     usernmae: 'test',
     password: 'password'
+  }
   end
 
   describe 'POST user' do
@@ -44,6 +44,24 @@ RSpec.describe UsersController, type: :controller do
 
     end
 
+    it 'login' do
+
+      get :login, username: 'ionut', password: 'password', format: :json
+
+    end
+
+  end
+
+  describe 'GET user' do
+    it 'all' do
+      User.create!(email: 'admin@example.com', username: 'admin', password: 'password', password_confirmation: 'password')
+      User.create!(email: 'ionut@example.com', username: 'ionut', password: 'password', password_confirmation: 'password')
+      User.create!(email: 'catalin@example.com', username: 'catalin', password: 'password', password_confirmation: 'password')
+      # pp User.all
+    # expect do
+      get :index, consumer_key: '', consumer_secret: '', format: :json
+    # end.to eq(0)
+    end
   end
 
 end

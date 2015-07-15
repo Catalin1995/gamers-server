@@ -11,6 +11,8 @@ ActiveAdmin.register User do
     column :created_at
     column :admin
     column :username
+    column :consumer_key
+    column :consumer_secret
     actions
   end
 

@@ -1,6 +1,8 @@
+require 'pp'
 class UsersController < ApplicationController
 
   def show
+    pp User.all
     @user = User.find(params[:id])
   end
 
@@ -13,7 +15,10 @@ class UsersController < ApplicationController
   end
 
   def login
-    pp params
+    # pp params[:username]
+    pp User.all
+    @user = User.where( :username => params[:username])
+    # pp @user
  #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
  #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
  #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="

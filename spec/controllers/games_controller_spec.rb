@@ -33,7 +33,7 @@ RSpec.describe GamesController, type: :controller do
 
   it 'POST create' do
 
-    
+
   end
 
 end
