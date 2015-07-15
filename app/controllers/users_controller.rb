@@ -1,6 +1,7 @@
 require 'pp'
+require 'bcrypt'
 class UsersController < ApplicationController
-
+  include BCrypt
   def show
     pp User.all
     @user = User.find(params[:id])
@@ -15,9 +16,13 @@ class UsersController < ApplicationController
   end
 
   def login
-    # pp params[:username]
-    pp User.all
-    @user = User.where( :username => params[:username])
+    # pp User.all
+    # pp User.all
+    password = Password.create(params[:password])
+    pp password
+    @user = User.where(:username => params[:username]).first
+    pp @user.encrypted_password
+    # pp @user
     # pp @user
  #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
  #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="

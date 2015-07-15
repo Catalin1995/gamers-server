@@ -45,15 +45,20 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'login' do
+      User.create!(email: 'admin@example.com', username: 'admin', password: 'password', password_confirmation: 'password')
+      User.create!(email: 'ionut@example.com', username: 'ionut', password: 'password', password_confirmation: 'password')
+      User.create!(email: 'catalin@example.com', username: 'catalin', password: 'password', password_confirmation: 'password')
 
-      get :login, username: 'ionut', password: 'password', format: :json
-
+      expect do
+        get :login, username: 'ionut', password: 'password', format: :json
+      end.to change { Key.count }.by 1
     end
 
   end
 
   describe 'GET user' do
     it 'all' do
+
       User.create!(email: 'admin@example.com', username: 'admin', password: 'password', password_confirmation: 'password')
       User.create!(email: 'ionut@example.com', username: 'ionut', password: 'password', password_confirmation: 'password')
       User.create!(email: 'catalin@example.com', username: 'catalin', password: 'password', password_confirmation: 'password')
