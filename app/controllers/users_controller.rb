@@ -1,9 +1,8 @@
-require 'pp'
 require 'bcrypt'
 class UsersController < ApplicationController
   include BCrypt
+
   def show
-    pp User.all
     @user = User.find(params[:id])
   end
 
@@ -16,25 +15,32 @@ class UsersController < ApplicationController
   end
 
   def login
-    # pp User.all
-    # pp User.all
-    password = Password.create(params[:password])
-    pp password
-    @user = User.where(:username => params[:username]).first
-    pp @user.encrypted_password
-    # pp @user
-    # pp @user
- #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
- #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
- #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
- #    p SecureRandom.base64(10) # => "EcmTPZwWRAozdA=="
- # p SecureRandom.random_bytes(100) # => "\323U\030TO\234\357\020\a\337"
+
+    @user = authenticate(params[:username], params[:password])
+
+    if @user == nil
+      return render_response("Userul nu exista!", 400_001)
+    else
+      consumer_key = SecureRandom.base64(20)
+      secret_key = SecureRandom.base64(20)
+      Key.create!(user_id: @user.id, consumer_key: consumer_key, secret_key: secret_key)
+    end
+
   end
 
   private
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def authenticate(username, password)
+    user = User.where(:username => username).first
+    if user && user.encrypted_password == BCrypt::Engine.hash_secret(password, user.encrypted_password)
+      user
+    else
+      nil
+    end
   end
 
 end
