@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   resources :users
+  resources :chat, only: [:create]
 
-  resources :chat, only: [:show]
-  resources :games, only: [:index, :show]
+  resources :games, only: [:index, :show] do
+    resources :chat, only: [:index]
+  end
+
   # post '/login', to: 'users#login'
 
   get '/login', to: 'users#login'
+  get '/logout', to: 'users#logout'
 
 
   devise_for :users, ActiveAdmin::Devise.config
