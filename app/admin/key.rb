@@ -1,5 +1,6 @@
 ActiveAdmin.register Key do
-  permit_params :id, :consumer_key, :secret_key, :user_id
+  permit_params :id, :user_id
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -13,5 +14,14 @@ ActiveAdmin.register Key do
 #   permitted
 # end
 
+  index do
+    selectable_column
+    id_column
+    column :id
+    column :user_id
+    column :consumer_key
+    column :secret_key
+    actions
+  end
 
 end
