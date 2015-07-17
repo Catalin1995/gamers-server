@@ -24,16 +24,19 @@ RSpec.describe GamesController, type: :controller do
     expect(json['body'].count).to eq(4)
   end
 
-  it 'GET show' do
+  it 'GET show when game exist' do
     game = Game.new(name: 'LoL', category: 'STRATEGY')
     game.save
+
     get :show, id: game.id, format: :json
-    expect json
+    expect(json[:code]).to eq(200)
+    expect(json[:body][:id].to_s).to eq(game.id.to_s)
   end
 
-  it 'POST create' do
-
-
+  it 'GET show when game does not exist' do
+    get :show, id: 10000, format: :json
+    expect(json[:code]).to eq(400_021)
+    expect(json[:body]).to eq('Game does not exist')
   end
 
 end

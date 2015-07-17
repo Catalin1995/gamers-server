@@ -5,7 +5,11 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    begin
+      @game = Game.find(params[:id])
+    rescue
+      render_response("Game does not exist", 400_021)
+    end
   end
 
 end
