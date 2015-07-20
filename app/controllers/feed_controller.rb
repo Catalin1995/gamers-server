@@ -13,7 +13,17 @@ class FeedController < ApplicationController
   end
 
   def create
+    begin
+      @feed = Feed.create!(feed_params)
+    rescue
+      render_response("Can't create feed!", 400_032)
+    end
+  end
 
+  private
+
+  def feed_params
+    params.require(:feed).permit(:game_id, :user_id, :hours, :minutes)
   end
 
 end

@@ -1,25 +1,37 @@
 class Feed < ActiveRecord::Base
 
-  validates :user_id, presence: true
-  validates :game_id, presence: true
+  belongs_to :game
+  belongs_to :user
+
+  validates :user, presence: true
+  validates :game, presence: true
   validates :hours, presence: true
   validates :minutes, presence: true
 
-  validate :exist_user
-  validate :exist_game
+  validate :validate_time
 
   before_create :create_activity
 
   private
 
   def create_activity
-    self.activity = "On #{Time.now.day}/#{Time.now.month}/#{Time.now.year} at #{Time.now.hour}:#{Time.now.min}, #{User.find(self.user_id).username} started to play #{Game.find(self.game_id).name} for #{self.hours} hours and #{self.minutes} minutes!"
+
+    if Time.now.hour < 10
+      hour = "0#{Time.now.hour}"
+    else
+      hour = Time.now.hour
+    end
+
+    if Time.now.min < 10
+      min = "0#{Time.now.min}"
+    else
+      min = Time.now.min
+    end
+
+    self.activity = "On #{Time.now.day}/#{Time.now.month}/#{Time.now.year} at #{hour}:#{min}, #{user.username} started to play #{game.name} for #{self.hours} hours and #{self.minutes} minutes!"
   end
 
-  def exist_user
-  end
-
-  def exist_game
+  def validate_time
   end
 
 end
