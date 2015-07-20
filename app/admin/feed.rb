@@ -1,6 +1,5 @@
-ActiveAdmin.register Key do
-  permit_params :id, :user_id
-
+ActiveAdmin.register Feed do
+permit_params :user_id, :game_id, :hours, :minutes
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -14,13 +13,6 @@ ActiveAdmin.register Key do
 #   permitted
 # end
 
-  index do
-    selectable_column
-    id_column
-    column :user_id
-    column :consumer_key
-    column :secret_key
-    actions
-  end
+
 
 end

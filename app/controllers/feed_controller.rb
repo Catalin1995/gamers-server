@@ -1,0 +1,5 @@
+class FeedController < ApplicationController
+
+
+
+end
