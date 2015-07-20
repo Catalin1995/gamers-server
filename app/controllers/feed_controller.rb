@@ -5,7 +5,11 @@ class FeedController < ApplicationController
   end
 
   def show
-    pp params
+    begin
+      @feed = Feed.find(params[:id])
+    rescue
+      render_response("Feed does not exist!", 400_031)
+    end
   end
 
   def create
