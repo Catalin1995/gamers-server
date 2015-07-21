@@ -13,10 +13,16 @@ class FeedController < ApplicationController
   end
 
   def create
-    begin
-      @feed = Feed.create!(feed_params)
-    rescue
-      render_response("Can't create feed!", 400_032)
+    key = Key.where(:consumer_key => params[:consumer_key], :secret_key => params[:secret_key]).first
+    if key == nil
+      render_response("User is not logged", 400_011)
+    else
+      
+      begin
+        @feed = Feed.create!(feed_params)
+      rescue
+        render_response("Can't create feed!", 400_032)
+      end
     end
   end
 
