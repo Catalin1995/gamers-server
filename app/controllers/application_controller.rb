@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_mentor_user!
     authenticate_user!
-    pp '11111111111111111111111111111111111111111111'
-    pp current_user
-    pp '11111111111111111111111111111111111111111111'
-
     fail SecurityError if current_user.admin == false
   end
 
