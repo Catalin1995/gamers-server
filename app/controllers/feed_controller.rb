@@ -1,7 +1,7 @@
 class FeedController < ApplicationController
 
   def index
-      @all = Feed.all
+    @all = all_available_time
   end
 
   def show
@@ -24,6 +24,17 @@ class FeedController < ApplicationController
 
   def feed_params
     params.require(:feed).permit(:game_id, :user_id, :hours, :minutes)
+  end
+
+  def all_available_time
+    time = Time.now
+    @all = []
+    for feed in Feed.all
+      if feed.created_at >= Time.now - feed.hours.hours - feed.minutes.minutes
+        @all.push(feed)
+      end
+    end
+    @all
   end
 
 end
