@@ -86,7 +86,7 @@ RSpec.describe UsersController, type: :controller do
     it 'login when account exist' do
       user = User.create!(email: 'ionut@example.com', username: 'ionut', password: 'password', password_confirmation: 'password')
       expect do
-        get :login, username: 'ionut', password: 'password', format: :json
+        post :login, username: 'ionut', password: 'password', format: :json
       end.to change { Key.count }.by 1
 
       expect(json[:body][:user_id]).to eq(user.id)
@@ -94,7 +94,7 @@ RSpec.describe UsersController, type: :controller do
 
     it 'login when account not exist' do
       expect do
-        get :login, username: 'ionut', password: 'password', format: :json
+        post :login, username: 'ionut', password: 'password', format: :json
       end.to change { Key.count }.by 0
 
       expect(json[:code]).to eq(400_001)
@@ -108,7 +108,7 @@ RSpec.describe UsersController, type: :controller do
       key1 = Key.create(user_id: user1.id)
 
       expect do
-        get :logout, consumer_key: key1.consumer_key, secret_key: key1.secret_key, format: :json
+        delete :logout, consumer_key: key1.consumer_key, secret_key: key1.secret_key, format: :json
       end.to change {Key.count}.by -1
     end
 
@@ -119,7 +119,7 @@ RSpec.describe UsersController, type: :controller do
       key1 = Key.create(user_id: user1.id)
 
       expect do
-        get :logout, consumer_key: 'key1.consumer_key', secret_key: 'key1.secret_key', format: :json
+        delete :logout, consumer_key: 'key1.consumer_key', secret_key: 'key1.secret_key', format: :json
       end.to change {Key.count}.by 0
 
       expect(json[:code]).to eq(400_003)

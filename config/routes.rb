@@ -8,10 +8,8 @@ Rails.application.routes.draw do
     resources :chat, only: [:index]
   end
 
-  # post '/login', to: 'users#login'
-
-  get '/login', to: 'users#login'
-  get '/logout', to: 'users#logout'
+  post '/login', to: 'users#login'
+  delete '/logout', to: 'users#logout'
 
 
 
