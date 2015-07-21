@@ -116,19 +116,7 @@ RSpec.describe FeedController, type: :controller do
       post :create, feed: {game_id: game.id, user_id: user.id, hours: 'asd', minutes: '21sd'}, format: :json
       expect(json[:code]).to eq(400_032)
       expect(json[:body]).to eq("Can't create feed!")
-
-      hours = 1
-      minutes = 10
-
-      feed = Feed.create!(game_id: game.id, user_id: user.id, hours: 0, minutes: 0)
-      a = feed[:created_at]
-      b = Time.now
-      pp a<b
-      pp a
-      pp b
-      feed = Feed.where('created_at > :time', :time => Time.now - hours.hours - minutes.minutes)
-      pp feed
-
+      
     end
   end
 
