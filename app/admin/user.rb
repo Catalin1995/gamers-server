@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :username, :email, :password, :password_confirmation, :admin
+  permit_params :username, :email, :password, :password_confirmation, :admin, :avatar, :remote_avatar_url
 
   index do
     selectable_column
@@ -10,6 +10,7 @@ ActiveAdmin.register User do
     column :created_at
     column :admin
     column :username
+    column :avatar
     actions
   end
 
@@ -24,6 +25,8 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :remote_avatar_url
+      f.input :avatar
       f.input :admin
     end
     f.actions
