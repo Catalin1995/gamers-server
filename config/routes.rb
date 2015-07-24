@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:get, :show]
   resources :chat, only: [:create]
 
   resources :feed, only: [:index, :show, :create]
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :chat, only: [:index]
   end
 
-  post '/login', to: 'users#login'
+  put '/login', to: 'users#login'
   delete '/logout', to: 'users#logout'
 
 
