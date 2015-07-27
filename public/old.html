@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="firstPageModule">
+<head>
+<title> Gamers Website</title>
+<meta charset="utf-8" />
+<meta name="keywords" content="gamers, connected, games, fps, mmorpg">
+<meta name="Author" content="tecknoworks.github.io">
+<meta name="description" content="Gamers Connected brings gamers around the world in one place, to steam, watch, and play together.">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<link rel="icon" href="./tmp/img/icon.png" type="image/png" size="16x16">
+<link rel="stylesheet" type="text/css" href="./css/main-pg.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="./js/date_time.js"></script>
+
+
+</head>
+
+<body ng-controller="secondPageController">
+<!-- START BODY-->
+<div class="container-fluid">
+<div class="row" align="center">
+<div class="col-xs-12 col-md-16" style="background-color: #7F95B5"> <h4><div align="left" style="margin-left: 80px; margin-right:100px;"><a href="./main.html">HOME</a> &nbsp; &nbsp; <a href="#fps">FPS</a> &nbsp; &nbsp; <a href="#mmo">MMORPG</a> &nbsp; &nbsp; <a href="#str">STRATEGY</a> &nbsp; &nbsp;</div></h4></div>
+</div>
+<div class="row" align="center">
+  <div class="col-md-3"><h4><img src="./tmp/img/cat.png" width="30px" height="30px"/>&nbsp;Categories</h4></br>
+  <div align="left">
+ <h4 id="fps"> FPS </h4>
+  <ul class="list-group" style="border: 1px solid #808080; border-radius: 8px; box-shadow: 3px 3px 1px #C2C2C2">
+  <li class="list-group-item ul" ><a href="#"> Battlefield</a></li>
+  <li class="list-group-item ul"><a href="#"> Call of Duty</a></li>
+  <li class="list-group-item ul"><a href="#"> Counter Strike</a></li>
+  </ul>
+ <h4 id="mmo"> MMORPG</h4>
+  <ul  class="list-group" style="border: 1px solid #808080; border-radius: 8px; box-shadow: 3px 3px 1px #C2C2C2" >
+<li class="list-group-item ul"  ><a href="#"> Aion Online</a></li>
+<li class="list-group-item ul"><a href="#"> Cabal Online</a> </li>
+<li class="list-group-item ul"><a href="#"> Conquer Online</a></li>
+<li class="list-group-item ul"><a href="#"> Lineage 2</a></li>
+<li class="list-group-item ul"><a href="#"> Metin 2</a></li>
+<li class="list-group-item ul"><a href="#"> Minecraft</a></li>
+<li class="list-group-item ul"><a href="#"> Mu Online</a></li>
+<li class="list-group-item ul"><a href="#"> Silkroad Online</a></li>
+<li class="list-group-item ul"><a href="#"> World of Warcraft</a></li>
+</ul>
+ <h4 id="str"> STRATEGY</h4>
+ <ul class="list-group" style="border: 1px solid #808080; border-radius: 8px; box-shadow: 3px 3px 1px #C2C2C2">
+ <li class="list-group-item ul"><a href="#">Command & Conquer</a></li>
+ <li class="list-group-item ul"><a href="#">StarCraft</a></li>
+ <li class="list-group-item ul"><a href="#">Dota</a></li>
+ <li class="list-group-item ul"><a href="#">Warcraft</a></li>
+ <li class="list-group-item ul"><a href="#">League of Legends</a></li>
+ 
+ </ul>
+ 
+ </div>
+  </div>
+
+   
+    
+<div ng-include="'/inc/home.html'"></div>
+    
+
+    
+  <div class="col-md-3"><h4><img src="./tmp/img/option.png" width="30px" height="30px"/>&nbsp;User Control Panel</h4></br>
+  <div align="left"><div class="ucp"> 
+<h4>Welcome Back, {{user}}</h4>
+      <hr style="border: 1px solid #D9D9D9 ;" />
+<img src="./tmp/img/avatar.png" width="70px" height="70px"/> <img src="./tmp/img/message.png" width="20px" height="20px" /> 0 New Messages</br></br>
+<div align="center" >
+    
+
+    
+    
+<div class="accordion" id="accordion3">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse3" >
+        <div align="right">Statistics (Expand ++)</div>
+      </a>
+	 
+    </div></div><div class="bordura ul">
+<div align="left">Total Games: 6</br>
+Played today: 1</br>
+
+
+    <div id="collapse3" class="accordion-body collapse">
+      <div class="accordion-inner" align="left">
+        Online Players: 753</br>
+		Total Users: 3210</br>
+    Registered Today: 37</br>
+</div>
+      </div>
+	  </div>
+	  </div></div>
+    
+    
+
+    
+    </br>
+Current Time:
+<span id="date_time"></span>
+<script type="text/javascript">window.onload = date_time('date_time');</script>
+</br>
+</br>
+<div class="btn-group" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      User Settings
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Change Password</a></li>
+      <li><a href="#">Change Username</a></li>
+	  <li><a href="#">Change Avatar</a></li>
+	  <li><a href="index.html" ng-click="logOut()"  style="color:red">Log out</a></li>
+    </ul>
+  </div>
+ <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Friends (0)
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+	  <li><a href="#">Friends List</a></li>
+      <li><a href="#">Add Friend</a></li>
+      <li><a href="#">Remove Friend</a></li>
+	  <li><a href="#">Block Friend</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+  </div>
+
+<h3>Chat</h3></br>
+<div align="left">
+<div class="form-group">
+  <textarea class="form-control" rows="20" id="comment"></textarea>
+  </div>
+  <div class="form-group">
+   <input type="name" placeholder="Type your message here" class="form-control"><div align="right"><button type="submit" class="btn btn-primary">Send</button></div>
+
+</div>
+  
+  </div>
+<!-- START FOOTER -->
+</div>
+</br>
+
+<!-- END FOOTER -->
+
+<!-- END BODY-->	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Read the Docs: https://json.northpole.ro/index -->
+<script src="https://json.northpole.ro/javascripts/jnorthpole.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+<script src="script.js"></script>
+<script type="text/javascript">
+        
+</script>	
+</body>
+</html>

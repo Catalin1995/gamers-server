@@ -1,0 +1,87 @@
+<script>
+  $(function() {
+    var availableTags = [
+      "Bogdan",
+      "Oliviu",
+      "Catalin",
+      "Oli",
+      "Bog",
+      "Test",
+     
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+
+
+
+
+
+<div class="col-md-6">
+<h4>Friends Control Page</h4>
+</br>
+
+<div align="center"><img src="./tmp/img/user-icon.png" width="130px" height="130px"/></div>
+</br>
+<div class="ucp">
+    <div align="center"> Friends List</div>
+    </br>
+<div class="input-group input-group-sm" >
+  <span class="input-group-addon" id="sizing-addon3">Search</span>
+  <input id="tags" type="text" class="form-control" placeholder="Enter Friends Name" aria-describedby="sizing-addon3">
+
+    </div></br>
+<div class="btn-group">
+    <button type="button" class="btn btn-success">Search</button>
+</div>
+</br>
+<div class="accordion" id="accordion">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#friends">
+        <div align="right">(See full list)</div>
+      </a>
+	 
+    </div></div><div class="bordura ul">
+<div align="left">Total friends: 32
+ <hr style="border: 1px solid #D9D9D9 ;" />
+
+
+    <div id="friends" class="accordion-body collapse">
+      <div class="accordion-inner" align="left">
+          Friend 1<div align="right" style="display: inline; margin-left: 500px;"><a href="#"><img src="./tmp/img/delete.png" width="20px" height="20px" /></a> &nbsp; &nbsp; <a href="#"><img src="./tmp/img/block.png" width="20px" height="20px" /></a></div>
+           <hr style="border: 1px solid #D9D9D9 ;" />
+    
+		  Friend 2<div align="right" style="display: inline; margin-left: 500px;"><a href="#"><img src="./tmp/img/delete.png" width="20px" height="20px" /></a> &nbsp; &nbsp; <a href="#"><img src="./tmp/img/block.png" width="20px" height="20px" /></a></div>
+           <hr style="border: 1px solid #D9D9D9 ;" />
+		 Friend 3<div align="right" style="display: inline; margin-left: 500px;"><a href="#"><img src="./tmp/img/delete.png" width="20px" height="20px" /></a> &nbsp; &nbsp; <a href="#"><img src="./tmp/img/block.png" width="20px" height="20px" /></a></div>
+           <hr style="border: 1px solid #D9D9D9 ;" />
+
+</div>
+      </div>
+	  </div>
+	  </div></div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+  
+ 

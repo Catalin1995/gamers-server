@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+   <head>
+      <title> Gamers Connected</title>
+      <meta name="keywords" content="gamers, connected, games, fps, mmorpg">
+      <meta name="Author" content="tecknoworks.github.io">
+      <meta name="description" content="Gamers Connected brings gamers around the world in one place, to steam, watch, and play together.">
+      <meta name=viewport content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
+      <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+      <link rel="icon" href="./tmp/img/icon.png" type="image/png" size="16x16">
+      <link rel="stylesheet" type="text/css" href="./css/style.css">
+      <script src="./js/bootstrap.js"></script>
+      <script src="./js/jquery.min.js"></script>
+      <script src="./js/bootstrap.min.js"></script>
+      <script src="./js/date_time.js"></script>
+      <noscript>
+         <style type="text/css">
+            .pagecontainer {display:none;
+            }
+            .msg{
+            color: #F50000;
+            }
+         </style>
+         <div class="noscriptmsg msg">
+            You don't have javascript enabled.  Good luck with that.
+         </div>
+      </noscript>
+   </head>
+
+	<body ng-app = "gamersApp" ng-controller="IndexPageController">
+	<!-- <body data-ng-init="init()" ng-controller="firstPageController"> --> <!-- old code -->
+
+		      <!-- START BODY-->
+		      </br>
+		      <div class="container-fluid">
+		         <div class="row">
+		            <div class="col-md-5"><a href="./index.html"><img src="./tmp/img/logo.png" width="130" height="130"/></a></div>
+		            <div class="col-md-7">
+
+									<form class="form-inline">
+										<div class="form-group">
+											<label for="Name">Username:</label>
+											<input class="form-control" placeholder="Name" type="text" ng-model="user.name"/>
+										</div>
+
+										<div class="form-group">
+											<label for="password">Password:</label>
+											<input type="password" class="form-control" placeholder="Password" type="text" ng-model="user.password"/>
+										</div>
+
+										<button class="btn btn-warning" type = "button" ng-click= "login()">Login</button>
+									</form>
+
+		               <div class="regrec" align="right"><a href="#reg">Register</a> | <a href="#rec" onclick="showHideDiv('div-1')">Recover</a></div>
+		            </div>
+		            <div align="right" id="div-1" style="display:none; margin-right: 65px; margin-top:50px;" >
+		               </br>
+		               <form class="form-inline">
+		                  <div class="form-group">
+		                     <label for="exampleInputName2">Recover Password</label>
+		                     <input type="text" class="form-control" id="exampleInputName2" placeholder="Username">
+		                  </div>
+		                  <button type="submit" class="btn btn-warning" onClick="alert('Password Sent Succesfully')">Send Password</button>
+		               </form>
+		            </div>
+		         </div>
+		      </div>
+		      <!-- End div ROW HEADER -->
+		      </br>
+		       <hr style="border: 1px solid #FAE050 ;" />
+		      </br>
+		      <div class="margine">
+		         <div class="row">
+		            <!-- Start Div ROW Content -->
+		             <div class="col-md-7">
+		               <h3> Connect with Gamers around the world. </h3>
+		               <h4>
+		                  1. Create an account, its free!</br>
+		                  </br>
+		                  2. Log in</br>
+		                  </br>
+		                  3. Play!</br>
+		                  </br>
+		               </h4>
+		            </div>
+		            <div class="col-md-5">
+
+										<h3 id="reg">Not a member? Join us!</h3>
+										<form>
+
+											<div class="form-gropu">
+												<label for="email">Email:</label>
+												<input class="form-control" placeholder="Email" type="text" ng-model="new_user.email" required/>
+											</div>
+
+											<div class="form-gropu">
+												<label for="email">Username:</label>
+												<input class="form-control" placeholder="Username" type="text" ng-model="new_user.username" required/>
+											</div>
+
+											<div class="form-gropu">
+												<label for="email">Password:</label>
+												<input class="form-control" placeholder="Password" type="text" ng-model="new_user.password" required/>
+											</div>
+
+											<div class="form-gropu">
+												<label for="email">Retype Password:</label>
+												<input class="form-control" placeholder="Retype Password" type="text" ng-model="new_user.password_confirmation" required/>
+											</div>
+
+										</form>
+										<button class="btn btn-success" type = "button" ng-click= "create()">Login</button>
+		               <!-- END DIV REGISTER -->
+		            </div>
+		            <!-- End div Row Content -->
+		         </div>
+		      </div>
+		      </br>
+		      </br>
+		      </br>
+		      </br>
+		      </br>
+		      <div align="center" style="color:#A8A8A8;">
+		         &copy;
+		          <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
+		         <p>Gamers Connected</p>
+		      </div>
+		      </div> <!-- End div container -->
+		      <!-- END BODY-->
+
+					{{key}}
+					{{rezultat}}
+
+
+	<script src="./js/jnorthpole.js"></script>
+	<script src="./js/angular.min.js"></script>
+	<script src="script.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-resource.js"></script>
+
+	<script src="/js/app.js"></script>
+	<script src="/js/controllers/MainPageController.js"></script>
+	<script src="/js/controllers/IndexPageController.js"></script>
+
+	</body>
+
+</html>

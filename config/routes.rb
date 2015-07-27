@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:get, :show]
+  resources :users
   resources :chat, only: [:create]
 
   resources :feed, only: [:index, :show, :create]
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :show] do
     resources :chat, only: [:index]
   end
+
+  put '/create', to: 'users#create'
 
   put '/login', to: 'users#login'
   delete '/logout', to: 'users#logout'

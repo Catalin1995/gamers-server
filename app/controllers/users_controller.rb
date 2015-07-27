@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = authenticate(params[:username], params[:password])
+    user = authenticate(params[:user][:name], params[:user][:password])
     if user == nil
       return render_response("User does not exist!", 400_001)
     else
