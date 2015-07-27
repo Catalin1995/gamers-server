@@ -60,6 +60,8 @@
          <div align="center" class="col-md-6"></br>
            feds
            {{user}}
+           {{users}}
+
          </div>
 
          <!-- Center Module includes-->
@@ -76,7 +78,6 @@
 
 
 
-
          <div class="accordion" id="accordion3">
            <div class="accordion-group">
              <div class="accordion-heading">
@@ -86,12 +87,12 @@
 
              </div></div><div class="bordura ul">
           <div align="left">Total Games: {{number_of_games}}</br>
-            Played today: 1</br>
+                <!-- Played today: 1</br> -->
              <div id="ucp" class="accordion-body collapse">
                <div class="accordion-inner" align="left">
-                 Online Players: 753</br>
-         		     Total Users: 3210</br>
-                 Registered Today: 37</br>
+                 <!-- Online Players: 753</br> -->
+         		     Total Users: {{number_of_users}}</br>
+                 <!-- Registered Today: 37</br> -->
                </div>
              </div>
          	</div>

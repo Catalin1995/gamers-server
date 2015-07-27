@@ -2,6 +2,8 @@ app.controller('MainPageController', function ($scope, $http) {
 
 	$scope.games = '';
 	$scope.number_of_games = 0;
+	$scope.users = '';
+	$scope.number_of_users = 0;
 
 	$scope.get_games = function(){
 		$http.get('games.json').success(function(data){
@@ -14,13 +16,21 @@ app.controller('MainPageController', function ($scope, $http) {
 	$scope.get_games()
 	$scope.id_user = '1';
 
-	$scope.user = 'asd';
+	$scope.get_users = function(){
+		$http.get('users.json').success(function(data){
+			$scope.users = data['body'];
+			$scope.number_of_users = $scope.users.length;
+		});
+	}
+
+
 	$scope.get_user_info = function(){
 		$http.get('users/'+$scope.id_user+'.json').success(function(data){
 			$scope.user = data['body'];
 		});
 	}
 
+	$scope.get_users()
 	$scope.get_user_info()
 
 		// $scope.get_games()
