@@ -92,26 +92,27 @@
 
 											<div class="form-gropu">
 												<label for="email">Email:</label>
-												<input class="form-control" placeholder="Email" type="text" ng-model="new_user.email" required/>
+												<input class="form-control" placeholder="Email" type="email" ng-model="new_user.email" required/>
 											</div>
 
 											<div class="form-gropu">
-												<label for="email">Username:</label>
+												<label for="username">Username:</label>
 												<input class="form-control" placeholder="Username" type="text" ng-model="new_user.username" required/>
 											</div>
 
 											<div class="form-gropu">
-												<label for="email">Password:</label>
-												<input class="form-control" placeholder="Password" type="text" ng-model="new_user.password" required/>
+												<label for="password">Password:</label>
+												<input class="form-control" placeholder="Password" type="password" ng-model="new_user.password" required/>
 											</div>
 
 											<div class="form-gropu">
-												<label for="email">Retype Password:</label>
-												<input class="form-control" placeholder="Retype Password" type="text" ng-model="new_user.password_confirmation" required/>
+												<label for="password_confirmation">Retype Password:</label>
+												<input class="form-control" placeholder="Retype Password" type='p assword' ng-model="new_user.password_confirmation" required/>
 											</div>
 
 										</form>
-										<button class="btn btn-success" type = "button" ng-click= "create()">Login</button>
+                    <br>
+										<button class="btn btn-success" type = "button" ng-click= "create()">Create</button>
 		               <!-- END DIV REGISTER -->
 		            </div>
 		            <!-- End div Row Content -->
