@@ -4,6 +4,7 @@ app.controller('MainPageController', function ($scope, $http) {
 	$scope.number_of_games = 0;
 	$scope.users = '';
 	$scope.number_of_users = 0;
+	$scope.feeds = 'asd';
 
 	$scope.get_games = function(){
 		$http.get('games.json').success(function(data){
@@ -30,6 +31,13 @@ app.controller('MainPageController', function ($scope, $http) {
 		});
 	}
 
+	$scope.get_feeds = function(){
+		$http.get('feed.json').success(function(data){
+			$scope.feeds = data['body'];
+		});
+	}
+
+	$scope.get_feeds()
 	$scope.get_users()
 	$scope.get_user_info()
 
