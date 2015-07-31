@@ -1,10 +1,31 @@
 app.controller('MainPageController', function ($scope, $http) {
 
+
+	$scope.id_user = Cookies.get("user_id");
+
 	$scope.games = '';
 	$scope.number_of_games = 0;
 	$scope.users = '';
 	$scope.number_of_users = 0;
 	$scope.feeds = 'asd';
+
+	$scope.logout = function(){
+		Cookies.remove('user_id');
+		Cookies.remove('consumer_key');
+		Cookies.remove('secret_key');
+
+		$http.delete('logout.json', {id: '11'}).
+			success(function(data, status, headers, config) {
+				$scope.t = data;
+				// window.location.replace("/index");
+
+			}).
+			error(function(data, status, headers, config) {
+				$scope.t = data;
+			});
+
+
+	}
 
 	$scope.get_games = function(){
 		$http.get('games.json').success(function(data){
@@ -15,7 +36,6 @@ app.controller('MainPageController', function ($scope, $http) {
 	}
 
 	$scope.get_games()
-	$scope.id_user = '1';
 
 	$scope.get_users = function(){
 		$http.get('users.json').success(function(data){
