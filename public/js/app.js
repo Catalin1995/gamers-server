@@ -29,7 +29,7 @@ function($routeProvider) {
     controller: "MainPageController",
   })
 
-  .when('/game', {
+  .when('/games/:id', {
     templateUrl: 'partials/login/game.html',
     controller: "GamePageController",
   })
