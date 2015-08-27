@@ -27,5 +27,4 @@ app.controller('IndexPageController', function ($scope, $http) {
 				$scope.rezultat = data;
 			});
 	}
-
 });
