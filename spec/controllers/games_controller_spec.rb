@@ -2,30 +2,29 @@ require 'rails_helper'
 
 RSpec.describe GamesController, type: :controller do
   render_views
-
-  before(:each) do
-    Game.delete_all
-
-    game = Game.new(name: 'LoL', category: 'STRATEGY')
-    game.save
-    game = Game.new(name: 'Battlefield', category: 'FPS')
-    game.save
-    game = Game.new(name: 'Minecraft', category: 'MMORPG')
-    game.save
-    game = Game.new(name: 'Dota', category: 'STRATEGY')
-    game.save
-
-  end
+  let(:game) { create :game }
+    # game = Game.new(name: 'LoL', category: 'STRATEGY')
+    # game = Game.new(name: 'Battlefield', category: 'FPS')
+    # game = Game.new(name: 'Minecraft', category: 'MMORPG')
+    # game = Game.new(name: 'Dota', category: 'STRATEGY')
 
   it 'GET index' do
+    get :index, format: :json
+    expect(json['code']).to eq(200)
+    expect(json['body'].count).to eq(0)
+
+    create :game, name: 'LoL', category: "STRATEGY"
+    create :game, name: 'Battlefield', category: "FPS"
+    create :game, name: 'Minecraft', category: "MMORPG"
+    create :game, name: 'Dota', category: "STRATEGY"
+
     get :index, format: :json
     expect(json['code']).to eq(200)
     expect(json['body'].count).to eq(4)
   end
 
   it 'GET show when game exist' do
-    game = Game.new(name: 'LoL', category: 'STRATEGY')
-    game.save
+    game = create :game
 
     get :show, id: game.id, format: :json
     expect(json[:code]).to eq(200)
@@ -33,9 +32,8 @@ RSpec.describe GamesController, type: :controller do
   end
 
   it 'GET show when game does not exist' do
-    get :show, id: 10000, format: :json
+    get :show, id: -1, format: :json
     expect(json[:code]).to eq(400_021)
     expect(json[:body]).to eq('Game does not exist')
   end
-
 end
