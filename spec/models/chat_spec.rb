@@ -1,61 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe Chat, type: :model do
+  let(:chat) { create :chat }
 
-  before(:each) do
-    Chat.delete_all
-    chat = Chat.new(game_id: 1, user: 'Ionut', content: 'azi nu am timp')
-    chat.save
-    chat = Chat.new(game_id: 1, user: 'Catalin', content: 'text...')
-    chat.save
-    chat = Chat.new(game_id: 2, user: 'Adrian', content: 'play game')
-    chat.save
-    chat = Chat.new(game_id: 1, user: 'Test', content: 'text')
-    chat.save
-    chat = Chat.new(game_id: 4, user: 'Cristi', content: 'test')
-    chat.save
-    chat = Chat.new(game_id: 3, user: 'Vasile', content: 'nuuuuu')
-    chat.save
+  it { expect(subject).to belong_to :game}
 
-    Game.delete_all
-    game = Game.new(name: 'LoL', category: 'STRATEGY')
-    game.save
-    game = Game.new(name: 'Battlefield', category: 'FPS')
-    game.save
-    game = Game.new(name: 'Minecraft', category: 'MMORPG')
-    game.save
-    game = Game.new(name: 'Dota', category: 'STRATEGY')
-    game.save
+  it { expect(subject).to validate_presence_of :user}
+  it { expect(subject).to validate_presence_of :game}
+  it { expect(subject).to validate_presence_of :content}
 
+
+  it 'work' do
+    expect do
+      chat
+    end.to change { Chat.count }.by 1
   end
 
-
-  it 'work if is duplicate' do
-    expect do
-      chat = Chat.new(game_id: 4, user: 'asd', content: 'internet')
-      chat.save
-    end.to change { Chat.count }.by 1
+  it 'verif fields' do
+    game = create :game
+    chat = create :chat, game: game
+    expect(chat.game_id).to eq(game.id)
+    expect(chat.user).to eq('ionut')
+    expect(chat.content).to eq('bla bla bla')
   end
 
   it 'work if is duplicate' do
     expect do
-      chat = Chat.new(game_id: 1, user: 'Ionut', content: 'azi nu am timp')
-      chat.save
-    end.to change { Chat.count }.by 1
+      create :chat
+      create :chat
+    end.to change { Chat.count }.by 2
   end
 
   it 'delete chat' do
+    chat = create :chat
     expect do
-      chat = Chat.where(:game_id => 1, :user => 'Ionut')
       Chat.delete(chat)
     end.to change { Chat.count }.by -1
-  end
-
-  it 'presence game_id, user, content' do
-    Chat.new(game_id: '', user: '', content: '').should_not be_valid
-    Chat.new(game_id: 1, user: '', content: 'tot asa').should_not be_valid
-    Chat.new(game_id: '', user: '123', content: 'asd').should_not be_valid
-    Chat.new(game_id: 1, user: 'ionut', content: '').should_not be_valid
-    Chat.new(game_id: 2, user: '123', content: 'asd').should be_valid
   end
 end

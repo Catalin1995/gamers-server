@@ -9,4 +9,11 @@ ActiveAdmin.register Key do
     column :secret_key
     actions
   end
+
+  form do |f|
+    f.inputs "Admin Details" do
+      f.input :user
+    end
+    f.actions
+  end
 end

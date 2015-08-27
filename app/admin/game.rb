@@ -1,5 +1,5 @@
 ActiveAdmin.register Game do
-  permit_params :category, :name, :avatar, :remote_avatar_url
+  permit_params :name, :category, :avatar, :remote_avatar_url
 
   index do
     selectable_column
