@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :chat, only: [:create]
+  scope :api, defaults: { format: :json } do
 
-  resources :feed, only: [:index, :show, :create]
+    resources :users
 
-  resources :games, only: [:index, :show] do
-    resources :chat, only: [:index]
+    resources :chat, only: [:create]
+
+    resources :feed, only: [:index, :show, :create]
+
+    resources :games, only: [:index, :show] do
+      resources :chat, only: [:index]
+    end
   end
 
   put '/create', to: 'users#create'
 
   put '/login', to: 'users#login'
-  delete '/logout', to: 'users#logout'
-
-
+  #destroy '/logout', to: 'users#logout'
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

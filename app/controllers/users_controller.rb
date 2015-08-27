@@ -1,6 +1,5 @@
 require 'bcrypt'
 class UsersController < ApplicationController
-
   include BCrypt
 
   def show
@@ -33,7 +32,10 @@ class UsersController < ApplicationController
   end
 
   def logout
+    pp '111111111111111111111111111111111111111111111111111111111111'
     pp params
+    pp '111111111111111111111111111111111111111111111111111111111111'
+
     key = Key.where(:consumer_key => params[:consumer_key], :secret_key => params[:secret_key]).first
     if key == nil
       return render_response("This user was not logged in!", 400_003)

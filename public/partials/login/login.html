@@ -1,0 +1,87 @@
+</br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5"><a href="./index.html"><img src="./tmp/img/logo.png" width="130" height="130"/></a></div>
+    <div class="col-md-7">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="Name">Username:</label>
+          <input class="form-control" placeholder="Name" type="text" ng-model="user.name"/>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" placeholder="Password" type="text" ng-model="user.password"/>
+        </div>
+
+        <button class="btn btn-warning" type = "button" ng-click= "login()">Login</button>
+      </form>
+
+      <div class="regrec" align="right">
+        <a href="#reg">Register</a> | <a href="#rec" onclick="showHideDiv('div-1')">Recover</a>
+      </div>
+    </div>
+    <div align="right" id="div-1" style="display:none; margin-right: 65px; margin-top:50px;" ></br>
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="exampleInputName2">Recover Password</label>
+          <input type="text" class="form-control" id="exampleInputName2" placeholder="Username">
+        </div>
+        <button type="submit" class="btn btn-warning" onClick="alert('Password Sent Succesfully')">Send Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</br>
+<hr style="border: 1px solid #FAE050 ;" />
+</br>
+
+<div class="margine">
+  <div class="row">
+    <div class="col-md-7">
+      <h3> Connect with Gamers around the world. </h3>
+      <h4>
+        1. Create an account, its free!</br></br>
+        2. Log in</br></br>
+        3. Play!</br></br>
+      </h4>
+    </div>
+    <div class="col-md-5">
+
+      <h3 id="reg">Not a member? Join us!</h3>
+      <form>
+
+        <div class="form-gropu">
+          <label for="email">Email:</label>
+          <input class="form-control" placeholder="Email" type="email" ng-model="new_user.email" required/>
+        </div>
+
+        <div class="form-gropu">
+          <label for="username">Username:</label>
+          <input class="form-control" placeholder="Username" type="text" ng-model="new_user.username" required/>
+        </div>
+
+        <div class="form-gropu">
+          <label for="password">Password:</label>
+          <input class="form-control" placeholder="Password" type="password" ng-model="new_user.password" required/>
+        </div>
+
+        <div class="form-gropu">
+          <label for="password_confirmation">Retype Password:</label>
+          <input class="form-control" placeholder="Retype Password" type='password' ng-model="new_user.password_confirmation" required/>
+        </div>
+
+      </form>
+      <br>
+      <button class="btn btn-success" type = "button" ng-click= "create()">Create</button>
+    </div>
+  </div>
+</div>
+
+</br></br></br></br></br>
+<div align="center" style="color:#A8A8A8;">
+  &copy;
+  <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
+  <p>Gamers Connected</p>
+</div>

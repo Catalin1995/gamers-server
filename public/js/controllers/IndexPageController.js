@@ -10,15 +10,11 @@ app.controller('IndexPageController', function ($scope, $http) {
 				Cookies.set('user_id', data.body.user_id);
 				Cookies.set('consumer_key', data.body.consumer_key);
 				Cookies.set('secret_key', data.body.secret_key);
-				window.location.replace("/main");
-		    // this callback will be called asynchronously
-		    // when the response is available
+				window.location.replace("/#/main");
 		  }).
 		  error(function(data, status, headers, config) {
   			$scope.key = data;
 				alert("Password or account is incorrect!");
-				// called asynchronously if an error occurs
-		    // or server returns response with an error status.
 		  });
 	}
 
@@ -26,13 +22,9 @@ app.controller('IndexPageController', function ($scope, $http) {
 		$http.put('create.json', {user: $scope.new_user}).
 			success(function(data, status, headers, config) {
 				$scope.rezultat = data;
-				// this callback will be called asynchronously
-				// when the response is available
 			}).
 			error(function(data, status, headers, config) {
 				$scope.rezultat = data;
-				// called asynchronously if an error occurs
-				// or server returns response with an error status.
 			});
 	}
 
