@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   put '/create', to: 'users#create'
 
   put '/login', to: 'users#login'
-  #destroy '/logout', to: 'users#logout'
+  # delete '/logout', to: 'users#logout'
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

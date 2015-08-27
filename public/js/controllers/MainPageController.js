@@ -18,11 +18,11 @@ app.controller('MainPageController', function ($scope, $http) {
 		$scope.feeds = data['body'];
 	});
 
-	$http.get('/api/users/'+$scope.id_user+'.json').success(function(data){
+	$http.get('/api/users/'+$scope.id_user).success(function(data){
 		$scope.user = data['body'];
 	});
 
-	$http.get('users.json').success(function(data){
+	$http.get('/api/users.json').success(function(data){
 		$scope.users = data['body'];
 		$scope.number_of_users = $scope.users.length;
 	});
@@ -33,16 +33,22 @@ app.controller('MainPageController', function ($scope, $http) {
 		Cookies.remove('consumer_key');
 		Cookies.remove('secret_key');
 
-		$http({ url: 'logout.json',
-		method: 'DELETE',
-		data: {id: 1}
+		$http.delete('/logout/77').success(function(data){
+			$scope.asd = data['body'];
+			console.log($scope.asd)
+		});
+
+		// $http.destroy('/logout/1')
+		// $http({ url: 'logout.json',
+		// method: 'DELETE',
+		// data: {id: 1}
 		// headers: {"Content-Type": "application/json;charset=utf-8"}
-	}).then(function(res) {
-		console.log(res.data);
-	}, function(error) {
-		console.log(error);
-	});
-};
+		// }).then(function(res) {
+		// console.log(res.data);
+		// }, function(error) {
+		// console.log(error);
+		// });
+	};
 
 
 	// $http.delete('logout.json', data: {user: $scope.user}).
