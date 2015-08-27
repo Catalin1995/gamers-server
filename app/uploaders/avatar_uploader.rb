@@ -17,7 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "#{model.class.to_s.underscore}_default.jpg"
+    "/img/default/#{model.class.to_s.underscore}_default.jpg"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
