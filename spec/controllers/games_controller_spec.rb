@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe GamesController, type: :controller do
   render_views
   let(:game) { create :game }
-    # game = Game.new(name: 'LoL', category: 'STRATEGY')
-    # game = Game.new(name: 'Battlefield', category: 'FPS')
-    # game = Game.new(name: 'Minecraft', category: 'MMORPG')
-    # game = Game.new(name: 'Dota', category: 'STRATEGY')
 
   it 'GET index' do
     get :index, format: :json
