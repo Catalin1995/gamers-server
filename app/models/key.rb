@@ -11,5 +11,4 @@ class Key < ActiveRecord::Base
     self.consumer_key = SecureRandom.base64(20)
     self.secret_key = SecureRandom.base64(20)
   end
-
 end

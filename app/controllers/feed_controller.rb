@@ -1,7 +1,6 @@
 class FeedController < ApplicationController
-
   def index
-    @all = all_available_time
+    @feeds = all_available_time
   end
 
   def show
@@ -17,7 +16,7 @@ class FeedController < ApplicationController
     if key == nil
       render_response("User is not logged", 400_011)
     else
-      
+
       begin
         @feed = Feed.create!(feed_params)
       rescue
@@ -42,5 +41,4 @@ class FeedController < ApplicationController
     end
     @all
   end
-
 end

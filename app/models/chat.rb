@@ -4,5 +4,4 @@ class Chat < ActiveRecord::Base
   validates :game_id, presence: true
   validates :user, presence: true
   validates :content, presence: true
-
 end

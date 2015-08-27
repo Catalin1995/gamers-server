@@ -25,21 +25,6 @@ RSpec.describe FeedController, type: :controller do
 
     end
 
-    # xit 'index when feed it expired' do
-    #   #can't validate
-    #   game1 = Game.create!(name: 'LoL', category: 'STRATEGY')
-    #   user1 = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-    #
-    #   game2 = Game.create!(name: 'MMORPG', category: 'Lineage 2')
-    #   user2 = User.create!(email: 'catalin@example.com', username: 'Catalin', password: 'password', password_confirmation: 'password')
-    #
-    #   Feed.create!(game_id: game1.id, user_id: user1.id, hours: 10, minutes: 10)
-    #   Feed.create!(game_id: game1.id, user_id: user2.id, hours: 12, minutes: 10)
-    #   Feed.create!(game_id: game2.id, user_id: user1.id, hours: 2, minutes: 10)
-    #   Feed.create!(game_id: game2.id, user_id: user2.id, hours: 5, minutes: 10)
-    #
-    # end
-
     it 'show when feet exist' do
       game = Game.create!(name: 'LoL', category: 'STRATEGY')
       user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')

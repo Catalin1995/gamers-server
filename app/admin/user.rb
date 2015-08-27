@@ -5,11 +5,11 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+    column :username
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
     column :admin
-    column :username
     column :avatar
     actions
   end
@@ -31,5 +31,4 @@ ActiveAdmin.register User do
     end
     f.actions
   end
-
 end

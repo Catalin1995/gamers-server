@@ -58,16 +58,4 @@ RSpec.describe Chat, type: :model do
     Chat.new(game_id: 1, user: 'ionut', content: '').should_not be_valid
     Chat.new(game_id: 2, user: '123', content: 'asd').should be_valid
   end
-
-  # it 'update' do
-  #   expect do
-  #     chat = Chat.find_by(name: 'LoL')
-  #     chat.name = 'TestGame'
-  #     chat.save
-  #   end.to change { Chat.count }.by 0
-  #
-  #   Chat.find_by(name: 'TestGame').should_not be_nil
-  #   Chat.find_by(name: 'LoL').should be_nil
-  # end
-
 end

@@ -1,6 +1,1 @@
-json.id game.id.to_s
-json.(game, :category)
-json.(game, :name)
-json.(game, :avatar)
-json.created_at game.created_at
-json.updated_at game.updated_at
+json.call(game, :id,  :category, :name, :avatar, :created_at, :updated_at)

@@ -1,5 +1,4 @@
 class Feed < ActiveRecord::Base
-
   belongs_to :game
   belongs_to :user
 
@@ -34,5 +33,4 @@ class Feed < ActiveRecord::Base
 
     self.activity = "On #{Time.now.day}/#{Time.now.month}/#{Time.now.year} at #{hour}:#{min}, #{user.username} started to play #{game.name} for #{self.hours} hours and #{self.minutes} minutes!"
   end
-
 end

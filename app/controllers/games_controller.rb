@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
-
   def index
-    @all = Game.all()
+    @games = Game.all()
   end
 
   def show
@@ -11,5 +10,4 @@ class GamesController < ApplicationController
       render_response("Game does not exist", 400_021)
     end
   end
-
 end

@@ -45,5 +45,4 @@ RSpec.describe Game, type: :model do
     Game.find_by(name: 'TestGame').should_not be_nil
     Game.find_by(name: 'LoL').should be_nil
   end
-
 end

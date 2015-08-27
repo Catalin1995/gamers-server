@@ -1,7 +1,7 @@
 # class ChatController < ApplicationController
 #
 #   def index
-#     @chat_game = Chat.where(:game_id => params[:game_id])
+#     @chats = Chat.where(:game_id => params[:game_id])
 #   end
 #
 #   def create

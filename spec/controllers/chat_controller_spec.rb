@@ -33,7 +33,5 @@ RSpec.describe ChatController, type: :controller do
       expect(json[:body].count).to eq(2)
 
     end
-
   end
-
 end
