@@ -1,7 +1,6 @@
 class Game < ActiveRecord::Base
-  has_many :chat
-
-  has_many :feed
+  has_many :chats
+  has_many :feeds
 
   mount_uploader :avatar
   mount_uploader :avatar, AvatarUploader

@@ -1,9 +1,9 @@
 class Key < ActiveRecord::Base
   belongs_to :user
 
-  before_create :set_keys
+  validates :user, presence: true
 
-  validates :user_id, presence: true
+  before_create :set_keys
 
   private
 

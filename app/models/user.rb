@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :key
+  has_many :keys
+  has_many :feeds
 
-  has_many :feed
+  validates :username, presence: true
 
   mount_uploader :avatar
   mount_uploader :avatar, AvatarUploader

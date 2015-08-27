@@ -1,31 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Feed, type: :model do
+  let(:feed) { create :feed }
 
-  before(:all) do
-    Game.delete_all
-    User.delete_all
-    Feed.delete_all
-  end
+  it { expect(subject).to validate_presence_of :user }
+  it { expect(subject).to validate_presence_of :game }
+  it { expect(subject).to validate_presence_of :hours }
+  it { expect(subject).to validate_presence_of :minutes }
+  it { expect(subject).to validate_numericality_of :minutes }
+  it { expect(subject).to validate_numericality_of :hours }
+
+  it { expect(subject).to belong_to :game }
+  it { expect(subject).to belong_to :user }
 
   it 'create new feed' do
-
-    game = Game .create(name: "LoL", category: "STRATEGY")
-    user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-
     expect do
-      Feed.create!(game_id: game.id, user_id: user.id, hours: 2, minutes: 1)
+      feed
     end.to change{ Feed.count }.by 1
   end
 
   it 'set activity when is created' do
-
-    game = Game .create(name: "LoL", category: "STRATEGY")
-    user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-    hours = 2
-    minutes = 1
-
-    feed = Feed.create!(game_id: game.id, user_id: user.id, hours: hours, minutes: minutes)
+    user = create :user
+    game = create :game
+    feed = create :feed, hours: 2, minutes: 1, user: user, game: game
 
     if Time.now.hour < 10
       hour = "0#{Time.now.hour}"
@@ -39,17 +36,13 @@ RSpec.describe Feed, type: :model do
       min = Time.now.min
     end
 
-    expect(feed.activity).to eq("On #{Time.now.day}/#{Time.now.month}/#{Time.now.year} at #{hour}:#{min}, #{user.username} started to play #{game.name} for #{hours} hours and #{minutes} minutes!")
-
+    expect(feed.activity).to eq("On #{Time.now.day}/#{Time.now.month}/#{Time.now.year} at #{hour}:#{min}, #{user.username} started to play #{game.name} for 2 hours and 1 minutes!")
   end
 
   it 'hour must be integer' do
 
-    game = Game .create(name: "LoL", category: "STRATEGY")
-    user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-
     begin
-      Feed.create!(game_id: game.id, user_id: user.id, hours: 'asd', minutes: 12)
+      create :feed, hours: 'asd'
       assert false
     rescue
       assert true
@@ -58,12 +51,8 @@ RSpec.describe Feed, type: :model do
   end
 
   it 'minute must be integer' do
-
-    game = Game .create(name: "LoL", category: "STRATEGY")
-    user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-
     begin
-      Feed.create!(game_id: game.id, user_id: user.id, hours: '12', minutes: 'a2a')
+      create :feed, minutes: 'asd'
       assert false
     rescue
       assert true
@@ -72,47 +61,34 @@ RSpec.describe Feed, type: :model do
   end
 
   it 'minutes < 60 && minutes >= 0' do
-
-    game = Game .create(name: "LoL", category: "STRATEGY")
-    user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-
     begin
-      Feed.create!(game_id: game.id, user_id: user.id, hours: 12, minutes: 60 )
+      create :feed, minutes: 60
       assert false
     rescue
       assert true
     end
 
-
     begin
-      Feed.create!(game_id: game.id, user_id: user.id, hours: '12', minutes: '-1')
+      create :feed, minutes: -1
       assert false
     rescue
       assert true
     end
-
   end
 
   it 'hours <= 24 && hours >= 0' do
-
-    game = Game .create(name: "LoL", category: "STRATEGY")
-    user = User.create!(email: 'ionut@example.com', username: 'Ionut', password: 'password', password_confirmation: 'password')
-
     begin
-      Feed.create!(game_id: game.id, user_id: user.id, hours: '25', minutes: '12')
+      create :feed, hours: 25
       assert false
     rescue
       assert true
     end
 
-
     begin
-      Feed.create!(game_id: game.id, user_id: user.id, hours: '-1', minutes: '12')
+      create :feed, hours: -1
       assert false
     rescue
       assert true
     end
-
   end
-
 end
