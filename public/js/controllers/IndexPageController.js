@@ -3,8 +3,17 @@ app.controller('IndexPageController', function ($scope, $http) {
 	$scope.user = {};
 	$scope.new_user = {};
 
+	isLog = function(){
+		$scope.id_user = Cookies.get("user_id");
+		if ($scope.id_user != null){
+			window.location.replace("/#/main");
+		}
+	}
+
+	isLog()
+
 	$scope.login = function(){
-		$http.put('login.json', {user: $scope.user}).
+		$http.put('/api/login.json', {user: $scope.user}).
 		  success(function(data, status, headers, config) {
 				$scope.key = data;
 				Cookies.set('user_id', data.body.user_id);
@@ -19,7 +28,7 @@ app.controller('IndexPageController', function ($scope, $http) {
 	}
 
 	$scope.create = function(){
-		$http.put('create.json', {user: $scope.new_user}).
+		$http.post('/api/users', {user: $scope.new_user}).
 			success(function(data, status, headers, config) {
 				$scope.rezultat = data;
 			}).
