@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :games, only: [:index, :show] do
       # resources :chat, only: [:index]
     end
+    resources :games, only: [:show] do
+      resources :gamefeeds, only: [:index]
+    end
   end
 
   # delete '/logout', to: 'users#logout'
