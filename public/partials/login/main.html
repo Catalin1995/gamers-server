@@ -104,20 +104,22 @@
       </div>
 
     </div>
+    <h3>Chat</h3>
+    <div align="left">
+      <div class="form-group">
+        <textarea readonly class="form-control" rows="15" id="comment" style="overflow:hidden;">{{chat_text}}</textarea>
+      </div>
+      <form ui-keypress="{13:'myFunc($event)'}">
+        <div class="form-group">
+          <input type="name" placeholder="Type your message here" class="form-control" ng-model="myMsg" ng-enter='sendMessage()'>
+          <div align="right">
+            <button type="submit" ng-click="sendMessage()" class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-
-<!-- <h3>Chat</h3></br>
-<div align="left">
-<div class="form-group">
-<textarea class="form-control" rows="20" id="comment"></textarea>
-</div>
-<div class="form-group">
-<input type="name" placeholder="Type your message here" class="form-control"><div align="right"><button type="submit" class="btn btn-primary">Send</button></div>
-
-</div>
-
-</div> -->
 
 <!-- <div ng-include="'./inc/template/right.html'"></div> -->
 <!-- right Module includes ucp chat-->
