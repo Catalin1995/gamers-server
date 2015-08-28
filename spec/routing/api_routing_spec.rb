@@ -8,6 +8,9 @@ RSpec.describe 'Api Routing', type: :routing do
     it 'routes to #show' do
       expect(get: '/api/users/1').to route_to(controller: 'users', action: 'show', format: :json, id: '1')
     end
+    it 'routes to #login' do
+      expect(put: '/api/login').to route_to(controller: 'users', action: 'login', format: :json)
+    end
   end
 
   describe 'feeds' do
@@ -31,7 +34,9 @@ RSpec.describe 'Api Routing', type: :routing do
     end
   end
 
-  it 'login' do
-    expect(put: '/api/login').to route_to(controller: 'users', action: 'login', format: :json)
+  describe 'gamefeeds' do
+    it 'routes to #index' do
+      expect(get: '/api/games/1/gamefeeds').to route_to(controller: 'gamefeeds', action: "index", game_id: '1', format: :json)
+    end
   end
 end
