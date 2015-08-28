@@ -1,5 +1,5 @@
-app.controller('GamePageController', function ($scope, $http) {
+app.controller('FriendpageController', function ($scope, $http) {
 
-  $scope.test = 'test';
+  // $scope.test = 'test';
 
 });

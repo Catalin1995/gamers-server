@@ -1,5 +1,4 @@
-app.controller('GamePageController', function ($scope, $http) {
+app.controller('EditPageController', function ($scope, $http) {
 
-  $scope.test = 'test';
 
 });

@@ -9,20 +9,33 @@
 </br></br></br>
 
 <div class="row">
-  <div class="col-xs-2">
-    <h2 align='center'>Word of warcraft</h2>
-    <img src='http://www.zero1gaming.com/wp-content/uploads/2013/01/Featured-Image-WoW-Logo-221x221.png' height="50%", width='50%' class='center-block'>
+  <div class="col-xs-3">
+    <h2 align='center'>{{game.name}}</h2>
+    <img src='{{game.avatar.avatar.url}}' height="50%", width='50%' class='center-block'>
+    Category: {{game.category}} </br>
     Total time played: 2 days</br>
-    Online players: 10</br>
-    Today: 200</br>
+    Online players: {{available_feeds.length}}</br>
+    Total players: {{available_feeds.length + unavailable_feeds.length}}</br>
 
     <br><br>
     <b> Description: </b></br>
     World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment. It is the fourth released game set in the fantasy Warcraft universe, which was first introduced by Warcraft: Orcs & Humans in 1994.[4] World of Warcraft takes place within the Warcraft world of Azeroth, approximately four years after the events at the conclusion of Blizzard's previous Warcraft release, Warcraft III: The Frozen Throne.[5] Blizzard Entertainment announced World of Warcraft on September 2, 2001.[6] The game was released on November 23, 2004, on the 10th anniversary of the Warcraft franchise.
   </div>
-  <div class="col-xs-8">
+  <div class="col-xs-6">
     <div align='center'>
-      <h1>List with feeds</h1>
+      <h1>Available feeds</h1>
+      <ul class="list-group" >
+        <div ng-repeat="feed in available_feeds">
+          <li class="list-group-item ul" >{{feed.activity}} <br> Time Left: --:-- <br> </li>
+        </div>
+      </ul>
+      <br>
+      <h1>Unavailable feeds</h1>
+      <ul class="list-group" >
+        <div ng-repeat="feed in unavailable_feeds">
+          <li class="list-group-item ul" >{{feed.activity}} <br> Time Left: --:-- <br> </li>
+        </div>
+      </ul>
     </div>
   </div>
 </div>
