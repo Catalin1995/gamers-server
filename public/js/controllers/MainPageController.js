@@ -9,6 +9,7 @@ app.controller('MainPageController', function ($scope, $http) {
 	$scope.number_of_users = 0;
 	$scope.feeds = {};
 	$scope.myMsg = '';
+	$scope.chat_text = '';
 
 	$http.get('/api/games.json').success(function(data){
 		$scope.games = data['body'];
@@ -34,9 +35,23 @@ app.controller('MainPageController', function ($scope, $http) {
 		Cookies.remove('secret_key');
 		window.location.replace("/#/index");
 	};
-	var textarea = document.getElementById('comment');
 
-	$scope.chat_text = '';
+	$scope.refresh = function(){
+		$http.get('/api/users/'+$scope.id_user+'/globalchat').success(function(data){
+			$scope.globalchat = data['body'];
+			$scope.chat_text = '';
+			createString($scope.globalchat)
+		});
+	}
+
+	createString = function(data){
+		for(i=0;i<data.length;i++){
+			$scope.chat_text = $scope.chat_text + data[i]['user_name'] + ': ' + data[i]['content'] + '\n';
+		}
+	}
+
+	var textarea = document.getElementById('comment');
+	$scope.refresh()
 
   $scope.sendMessage = function() {
 		$scope.chat_text = $scope.chat_text + $scope.myMsg + '\n';
