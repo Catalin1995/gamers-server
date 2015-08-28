@@ -39,4 +39,10 @@ RSpec.describe 'Api Routing', type: :routing do
       expect(get: '/api/games/1/gamefeeds').to route_to(controller: 'gamefeeds', action: "index", game_id: '1', format: :json)
     end
   end
+
+  describe 'globalchat' do
+    it 'routes to #index' do
+      expect(get: '/api/users/1/globalchat').to route_to(controller: 'globalchat', action: "index", user_id: '1', format: :json)
+    end
+  end
 end

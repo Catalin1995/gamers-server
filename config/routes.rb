@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
 
-    resources :users, only: [:index, :show, :create]
+    resources :users, only: [:index, :show, :create] do
+      resources :globalchat, only: [:index]
+    end
     resources :feed, only: [:index, :show, :create]
     put '/login', to: 'users#login'
     # resources :chat, only: [:create]
-    resources :games, only: [:index, :show] do
-      # resources :chat, only: [:index]
-    end
+    resources :games, only: [:index, :show]
     resources :games, only: [:show] do
       resources :gamefeeds, only: [:index]
     end
