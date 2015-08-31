@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
 
     resources :users, only: [:index, :show, :create] do
-      resources :globalchat, only: [:index]
+      resources :globalchat, only: [:index, :create]
     end
     resources :feed, only: [:index, :show, :create]
     put '/login', to: 'users#login'

@@ -44,5 +44,8 @@ RSpec.describe 'Api Routing', type: :routing do
     it 'routes to #index' do
       expect(get: '/api/users/1/globalchat').to route_to(controller: 'globalchat', action: "index", user_id: '1', format: :json)
     end
+    it 'routes to #create' do
+      expect(post: '/api/users/1/globalchat').to route_to(controller: 'globalchat', action: "create", user_id: '1', format: :json)
+    end
   end
 end

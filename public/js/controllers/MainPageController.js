@@ -42,6 +42,7 @@ app.controller('MainPageController', function ($scope, $http) {
 			$scope.chat_text = '';
 			createString($scope.globalchat)
 		});
+		textarea.scrollTop = textarea.scrollHeight;
 	}
 
 	createString = function(data){
@@ -53,9 +54,11 @@ app.controller('MainPageController', function ($scope, $http) {
 	var textarea = document.getElementById('comment');
 	$scope.refresh()
 
-  $scope.sendMessage = function() {
-		$scope.chat_text = $scope.chat_text + $scope.myMsg + '\n';
-  	$scope.myMsg = '';
-		textarea.scrollTop = textarea.scrollHeight;
+	$scope.sendMessage = function() {
+		$http.post('/api/users/' + $scope.id_user + '/globalchat', {consumer_key: Cookies.get('consumer_key'), secret_key: Cookies.get('secret_key'), content: $scope.myMsg})
+		.success(function(data){
+
+		});
+		$scope.refresh()
 	}
 });
